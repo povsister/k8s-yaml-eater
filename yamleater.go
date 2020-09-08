@@ -73,6 +73,7 @@ func (e *yamlEater) Next() ([]byte, error) {
 	return next, nil
 }
 
+// ** This is NOT thread-safe **
 // Current returns the current full YAML documents.
 // It returns an error if called before Next/NextObj or the last Next call fails.
 func (e *yamlEater) Current() ([]byte, error) {
@@ -82,6 +83,7 @@ func (e *yamlEater) Current() ([]byte, error) {
 	return e.current, e.errRead
 }
 
+// ** This is NOT thread-safe **
 // CurrentObj returns the current full decoded object.
 // It returns an error if called before NextObj/Next or the last Next call fails.
 func (e *yamlEater) CurrentObj() (runtime.Object, *apischeme.GroupVersionKind, error) {
