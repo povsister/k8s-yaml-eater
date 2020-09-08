@@ -138,7 +138,7 @@ func (e *yamlEater) readYAML() {
 		}
 		// validate the YAML by converting it to JSON
 		jsonTest, err := k8syaml.ToJSON(read)
-		if !bytes.Equal(jsonTest, invalidJSON) && !bytes.Equal(jsonTest, emptyJSON) {
+		if !bytes.Equal(jsonTest, invalidJSON) && !bytes.Equal(jsonTest, emptyJSON) && err == nil {
 			e.readChan <- read
 		}
 	}
